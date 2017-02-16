@@ -14,7 +14,10 @@ return [
     'database' => '',
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
-    'prefix' => ''
+    'prefix' => '',
+    'options' => [
+        PDO::MYSQL_ATTR_MAX_BUFFER_SIZE => 1024 * 1024 * 64
+    ]
   ],
   'settings' => [
     'apikey' => 'something_random',
