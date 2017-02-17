@@ -73,6 +73,11 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                     'response' => 'Image deleted.',
               ]));
     } elseif ($action == 'make') {
+      /**
+       * Set origin header to support PhoneGap apps.
+       */
+        header('Access-Control-Allow-Origin: *');
+       
       /*
        * Get and validate the api key.
        */
