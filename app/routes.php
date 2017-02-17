@@ -6,6 +6,16 @@ $app->get('/', function () use ($app, $config) {
     $app->response->redirect($config['settings']['homepage']);
 });
 
+$app->get('/l', function () use ($app) {
+    $image = \ImgServer\Models\Image::orderBy('id', 'DESC')->first();
+
+    if ($image == null) {
+        $app->notFound();
+    }
+
+    $app->response->redirect($app->config('baseUrl').'/'.$image->url);
+});
+
 $app->get('/:url', function ($url) use ($app) {
     $image = \ImgServer\Models\Image::where('url', $url)->first();
 
